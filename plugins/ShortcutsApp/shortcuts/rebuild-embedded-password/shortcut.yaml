@@ -1,0 +1,14 @@
+id: rebuild-embedded-password
+label: Rebuild (Embedded Password)
+name: Rebuild Website on Movable Type
+version: 0.0.1
+view:
+  - system
+  - website
+  - blog
+expires_in: 3600
+template: rebuild-embedded-password.tmpl
+l10n_lexicon:
+  ja:
+    Rebuild (Embedded Password): "再構築（パスワードを埋め込む）"
+    Rebuild Website on Movable Type: "MTで再構築"

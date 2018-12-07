@@ -1,0 +1,42 @@
+id: ShortcutsApp
+name: Shortcuts App
+version: 0.0.1
+
+description: <__trans phrase="This plugin provides utility methods for integrate with Shortcuts App.">
+author_name: Taku AMANO
+author_link: https://blog.taaas.jp/
+plugin_link: https://blog.taaas.jp/mt/shortcuts-app/
+
+l10n_lexicon:
+  ja:
+    This plugin provides multi factor authentication featrue for the Movable Type.: "iOSのショートカット.appとの連携機能提供します"
+    Shortcuts App: "ショートカット.app"
+    List Shortcut Apps: "ショートカットの一覧"
+    Install Shortcut: "ショートカットのインストール"
+    Install: "インストール"
+    Target user: "対象ユーザー"
+    You can install shortcut app from these URL (or QR code).: "以下のURL（またはQRコード）からショートカットをインストールすることができます。"
+    "Install Shortcut : [_1]": "ショートカットのインストール : [_1]"
+    "This URL is expired at : [_1]": "URLの有効期限 : [_1]"
+    Expired URL or Invalid URL.: "ページの有効期限が切れているか、もしくはURLに誤りがあります。"
+    'Install <span>"[_1]"</span>': "<span>「[_1]」</span>をインストール"
+applications:
+  cms:
+    methods:
+      shortcutsapp_list_shortcuts: $ShortcutsApp::MT::Plugin::ShortcutsApp::list_shortcuts
+      shortcutsapp_install_shortcut: $ShortcutsApp::MT::Plugin::ShortcutsApp::install_shortcut
+      shortcutsapp_get_shortcut:
+        handler: $ShortcutsApp::MT::Plugin::ShortcutsApp::get_shortcut
+        requires_login: 0
+      shortcutsapp_get_shortcut_data:
+        handler: $ShortcutsApp::MT::Plugin::ShortcutsApp::get_shortcut_data
+        requires_login: 0
+    menus:
+      tools:Ggg:
+        label: ショートカット.app
+        order: 1000
+        mode: shortcutsapp_list_shortcuts
+        view:
+          - system
+          - website
+          - blog

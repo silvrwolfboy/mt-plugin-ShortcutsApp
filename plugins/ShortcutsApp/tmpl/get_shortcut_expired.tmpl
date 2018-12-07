@@ -1,0 +1,16 @@
+<mt:setvar name="page_title" value="<__trans phrase="Install Shortcut">">
+<mt:setvar name="no_page_header" value="1">
+<mt:setvar name="complete" value="1">
+
+<mt:setvarblock name="page_content">
+<__trans phrase="Expired URL or Invalid URL.">
+</mt:setvarblock>
+
+<mt:include name="layout/chromeless.tmpl">
+<mt:if name="layout">
+<mt:var name="layout">
+<mt:else>
+<mt:include name="include/chromeless_header.tmpl">
+<mt:var name="page_content">
+<mt:include name="include/chromeless_footer.tmpl">
+</mt:if>

@@ -1,0 +1,15 @@
+id: post-photo
+label: Post Photo
+name: Post photo to Movable Type
+description: Post photo with location information.
+version: 0.0.1
+view:
+  - website
+  - blog
+template: post-photo.tmpl
+expires_in: 604800
+l10n_lexicon:
+  ja:
+    Post Photo: "写真を投稿"
+    Post photo to Movable Type: "MTへ写真を投稿"
+    Post photo with location information.: "写真付きの記事を投稿します。投稿の内容には写真から取得した位置情報が付加されます。"

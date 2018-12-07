@@ -1,0 +1,14 @@
+id: rebuild
+label: Rebuild
+name: Rebuild Website on Movable Type
+version: 0.0.1
+view:
+  - system
+  - website
+  - blog
+expires_in: 604800
+template: rebuild.tmpl
+l10n_lexicon:
+  ja:
+    Rebuild Website on Movable Type: "MTで再構築"
+    Rebuild: "再構築"

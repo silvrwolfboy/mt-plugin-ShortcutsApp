@@ -1,0 +1,81 @@
+<mt:setvar name="page_title" value="<__trans phrase="List Shortcut Apps">">
+
+<mt:setvarblock name="page_content">
+
+<mt:loop name="shortcuts">
+
+<div id="shortcut-<mt:var name="data{id}">" class="card">
+<div class="card-header">
+<div class="row">
+  <div class="col-12 theme-meta">
+
+    <div class="float-right">
+      <div class="input-group">
+        <mt:if name="is_administrator">
+        <select name="target_user_id" class="custom-select" aria-label="<__trans phrase="Target user">">
+        <mt:authors need_entry="0">
+          <option value="<mt:authorid>"<mt:if tag="authorid" eq="$current_user_id"> selected="selected"</mt:if>><mt:authordisplayname></option>
+        </mt:authors>
+        </select>
+        </mt:if>
+        <div class="input-group-append">
+          <a data-id="<mt:var name="data{id}">" href="javascript:void" class="btn btn-default button install-shortcut-link">
+            <__trans phrase="Install">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="theme-title">
+      <mt:var name="data{label}" escape="html">
+    <mt:if name="data{version}">
+      <span class="theme-version"><mt:var name="data{version}" escape="html"></span>
+    </mt:if>
+    </h3>
+  <mt:if name="data{description}">
+    <p class="mt-3 description"><mt:var name="data{description}" escape="html" nl2br="1"></p>
+  </mt:if>
+
+  </div>
+</div>
+</div>
+</div>
+
+</mt:loop>
+
+<script type="text/javascript">
+jQuery(function($) {
+  "use strict";
+
+  $(".install-shortcut-link").on("click", function(ev) {
+    ev.preventDefault();
+
+    var id = $(ev.currentTarget).data('id');
+    var userId = 0;
+    var blogId = '<mt:BlogId>';
+    var userIdElm = document.querySelector("#shortcut-" + id + ' select[name="target_user_id"]');
+    if (userIdElm) {
+        userId = userIdElm.value;
+    }
+
+    ($.fn.mtModal || $.fn.mtDialog).open(
+      "<mt:var name="mt_url">?__mode=shortcutsapp_install_shortcut&id=" + id + "&user_id=" + userId + "&blog_id=" + blogId,
+      {
+          esckeyclose: false
+      }
+    );
+  });
+});
+</script>
+
+</mt:setvarblock>
+
+<mt:include name="layout/default.tmpl">
+
+<mt:if name="layout">
+<mt:var name="layout">
+<mt:else>
+<mt:include name="include/header.tmpl" id="header_include">
+<mt:var name="page_content">
+<mt:include name="include/footer.tmpl">
+</mt:if>

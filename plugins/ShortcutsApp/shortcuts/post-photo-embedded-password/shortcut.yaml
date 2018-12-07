@@ -1,0 +1,15 @@
+id: post-photo-embedded-password
+label: Post Photo (Embedded Password)
+name: Post photo to Movable Type
+description: Post photo with location information.
+version: 0.0.1
+view:
+  - website
+  - blog
+template: post-photo-embedded-password.tmpl
+expires_in: 3600
+l10n_lexicon:
+  ja:
+    Post Photo (Embedded Password): "写真を投稿（パスワードを埋め込む）"
+    Post photo to Movable Type: "MTへ写真を投稿"
+    Post photo with location information.: "写真付きの記事を投稿します。投稿の内容には写真から取得した位置情報が付加されます。"

@@ -1,0 +1,46 @@
+<mt:setvar name="page_title" value="<__trans phrase="Install Shortcut">">
+<mt:setvar name="no_page_header" value="1">
+<mt:setvar name="complete" value="1">
+
+<mt:setvarblock name="url"><mt:var name="mt_url">?__mode=shortcutsapp_get_shortcut_data&token=<mt:var name="token"></mt:setvarblock>
+<mt:setvarblock name="page_content">
+<div id="shortcutsapp-btn-container">
+<a href="javascript:void(0)" class="btn btn-primary button">
+  <__trans phrase='Install <span>"[_1]"</span>' params='<mt:var name="shortcut_data{label}">'>
+</a>
+</div>
+<style type="text/css">
+@media all and (max-width: 767px) {
+  #shortcutsapp-btn-container {
+    text-align: center;
+  }
+  #shortcutsapp-btn-container span {
+    text-align: center;
+    display: block;
+    margin: auto;
+  }
+}
+</style>
+</mt:setvarblock>
+
+<mt:setvarblock name="jq_js_include" append="1">
+jQuery(function($) {
+  var url = "<mt:var name="url" encode_js="1">";
+  if (url.match(/^\//)) {
+    var a = document.createElement("A");
+    a.href = url;
+    url = a.href;
+  }
+
+  $("#shortcutsapp-btn-container a").attr("href", "shortcuts://import-shortcut?url=" + encodeURIComponent(url) + "&name=<mt:var name="shortcut_data{name}" encode_url="1" encode_js="1">");
+});
+</mt:setvarblock>
+
+<mt:include name="layout/chromeless.tmpl">
+<mt:if name="layout">
+<mt:var name="layout">
+<mt:else>
+<mt:include name="include/chromeless_header.tmpl">
+<mt:var name="page_content">
+<mt:include name="include/chromeless_footer.tmpl">
+</mt:if>

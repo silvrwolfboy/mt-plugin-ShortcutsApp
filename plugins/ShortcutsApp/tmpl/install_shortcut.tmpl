@@ -1,0 +1,64 @@
+<mt:setvarblock name="page_title"><__trans phrase="Install Shortcut : [_1]" params='<mt:var name="shortcut_data{label}">'></mt:setvarblock>
+
+<mt:setvarblock name="url"><mt:var name="mt_url">?__mode=shortcutsapp_get_shortcut&token=<mt:var name="token"></mt:setvarblock>
+<mt:setvarblock name="modal_body">
+<div><__trans phrase="You can install shortcut app from these URL (or QR code).">
+<small id="data_label-help" class="form-text text-muted"><__trans phrase="This URL is expired at : [_1]" params='<mt:date ts="$expires_at">'></small>
+</div>
+<div class="text-wrap">
+  <span id="get-shortcut-url"></span>
+  <a href="javascript:void(0)" class="button d-inline-block" id="btn-copy-url">
+    <svg title="Copy" role="img" class="mt-icon--secondary"><use xlink:href="<mt:var name="static_uri">images/sprite.svg#ic_duplicate"></use></svg>
+  </a>
+</div>
+<div style="text-align: center">
+  <img id="qr-code" src="" style="max-width: 100%" />
+</div>
+</mt:setvarblock>
+
+<mt:setvarblock name="jq_js_include" append="1">
+jQuery(function($) {
+  var url = "<mt:var name="url" encode_js="1">";
+  if (url.match(/^\//)) {
+    var a = document.createElement("A");
+    a.href = url;
+    url = a.href;
+  }
+
+  $("#get-shortcut-url").text(url);
+  $("#qr-code").attr("src", "https://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=" + encodeURIComponent(url));
+
+  jQuery('#btn-copy-url').on("click", function(ev) {
+    ev.preventDefault();
+
+    var fld = document.createElement("textarea");
+    fld.value = url;
+    document.body.appendChild(fld);
+    fld.select();
+    document.execCommand("copy");
+    fld.parentElement.removeChild(fld);
+  });
+});
+</mt:setvarblock>
+
+<mt:setvarblock name="action_buttons">
+  <button
+    type="submit"
+    accesskey="x"
+    class="cancel action button mt-close-dialog btn btn-default"
+    data-mt-modal-close
+    title="<__trans phrase="Close (x)">">
+    <__trans phrase="Close">
+  </button>
+</mt:setvarblock>
+
+<mt:include name="layout/modal.tmpl">
+
+<mt:if name="layout">
+<mt:var name="layout">
+<mt:else>
+<mt:include name="dialog/header.tmpl">
+<mt:var name="modal_body">
+<mt:var name="action_buttons">
+<mt:include name="dialog/footer.tmpl">
+</mt:if>
