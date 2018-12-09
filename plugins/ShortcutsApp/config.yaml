@@ -1,6 +1,6 @@
 id: ShortcutsApp
 name: Shortcuts App
-version: 0.0.1
+version: 0.0.2
 
 description: <__trans phrase="This plugin provides utility methods for integrate with Shortcuts App.">
 author_name: Taku AMANO
