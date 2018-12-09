@@ -28,6 +28,12 @@ Should look like this when installed:
 
 ![Install](https://github.com/usualoma/mt-plugin-ShortcutsApp/raw/master/artwork/install.png)
 
+## Trouble shooting
+
+### When shortcuts fails to handle image.
+
+Sometimes iOS cannot install shortcuts correctly. When you get this behavior, please delete the shortcut once and install it again.
+
 ## LICENSE
 
 Copyright (c) 2018 Taku AMANO
