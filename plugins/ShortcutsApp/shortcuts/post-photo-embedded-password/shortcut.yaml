@@ -2,6 +2,7 @@ id: post-photo-embedded-password
 label: Post Photo (Embedded Password)
 name: Post photo to Movable Type
 description: Post photo with location information.
+install_instruction: __INSTALL_INSTRUCTION__
 version: 0.0.1
 view:
   - website
@@ -13,3 +14,6 @@ l10n_lexicon:
     Post Photo (Embedded Password): "写真を投稿（パスワードを埋め込む）"
     Post photo to Movable Type: "MTへ写真を投稿"
     Post photo with location information.: "写真付きの記事を投稿します。投稿の内容には写真から取得した位置情報が付加されます。"
+    __INSTALL_INSTRUCTION__: "<strong>「インストール」ボタンをクリックする前に、一度iOSの「写真」アプリを起動してください。</strong>"
+  en:
+    __INSTALL_INSTRUCTION__: '<strong>Please launch "Photos" app of iOS temporary before click install button.</strong>'

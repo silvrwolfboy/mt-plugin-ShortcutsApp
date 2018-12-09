@@ -4,6 +4,9 @@
 
 <mt:setvarblock name="url"><mt:var name="mt_url">?__mode=shortcutsapp_get_shortcut_data&token=<mt:var name="token"></mt:setvarblock>
 <mt:setvarblock name="page_content">
+<mt:if name="shortcut_data{install_instruction}">
+<p><mt:var name="shortcut_data{install_instruction}"></p>
+</mt:if>
 <div id="shortcutsapp-btn-container">
 <a href="javascript:void(0)" class="btn btn-primary button">
   <__trans phrase='Install <span>"[_1]"</span>' params='<mt:var name="shortcut_data{label}">'>

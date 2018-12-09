@@ -31,9 +31,11 @@ sub shortcuts {
 
         my $lex = $data->{l10n_lexicon}{$lang}
             || $data->{l10n_lexicon}{$lang_short};
+        my $lex_fallback = $data->{l10n_lexicon}{en_us}
+            || $data->{l10n_lexicon}{en};
 
-        for my $k (qw(name label description)) {
-            my $trans = $lex->{ $data->{$k} }
+        for my $k (qw(name label description install_instruction)) {
+            my $trans = $lex->{ $data->{$k} } || $lex_fallback->{ $data->{$k} }
                 or next;
             $data->{$k} = $trans;
         }
